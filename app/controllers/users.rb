@@ -3,7 +3,7 @@ get '/users/new' do
     @user = User.find(session[:user_id])
     redirect "/users/#{@user.id}"
   else
-    erb :register
+    erb :index
   end
 end
 
@@ -12,10 +12,10 @@ post '/users/new' do
   @user.password = params[:password_plaintext]
   if @user.save
     session[:user_id] = @user.id
-    redirect '/'
+    redirect '/users/' + session[:user_id].to_s
   else
     @errors = @user.errors.full_messages
-    erb :register
+    erb :index
   end
 end
 

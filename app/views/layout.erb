@@ -38,11 +38,11 @@
 					</li>
 					<% else %>
 						<li class="nav-item active">
-							<a class="nav-link" href="/sessions/new">Login <span class="sr-only">(current)</span></a>
+							<a class="nav-link" data-toggle="modal" data-target="#loginModal" style="cursor: pointer;">Login <span class="sr-only">(current)</span></a>
 						</li>
 
 						<li class="nav-item active">
-							<a class="nav-link" href="/users/new">Register <span class="sr-only">(current)</span></a>
+							<a class="nav-link" data-toggle="modal" data-target="#registerModal" style="cursor: pointer;">Register <span class="sr-only">(current)</span></a>
 						</li>
 					<% end %>
 
@@ -57,7 +57,23 @@
 			<div class='card'>
 			<img class="card-img" src='/bg.png'>
 			<div class='card-img-overlay'>
-			  <%= yield %>
+			  <div class="row">
+			    <div class="col-5">
+
+			    </div>
+			    <div class="col-7">
+			  		<%= yield %>
+					<% if @errors %>
+					  <div class="errors-wrapper">
+					    <ul class="errors">
+					      <% @errors.each do |error| %>
+					        <li class="error"><%= error %></li>
+					      <% end %>
+					    </ul>
+					  </div>
+					<% end %>
+			    </div>
+			  </div>
 		    </div>
 		</div>
       </div>

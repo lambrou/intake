@@ -1,28 +1,20 @@
 <div class="container">
-  <div class="row">
-    <div class="col-4">
-      <h3>Hello, <%= @logged_in_as.name %>!</h3>
-      <br />
-      <br />
-    </div>
-    <div class="col-4">
-      <ul style="list-style-type: none">
-        <li>Lifestyle: <%= @logged_in_as.lifestyle %></li>
-        <li>Age: <%= @logged_in_as.age %></li>
-        <li>Sex: <%= @logged_in_as.sex %></li>
-        <li>Height: <%= @logged_in_as.height %>in</li>
-        <li>Weight: <%= @logged_in_as.weight %>lbs</li>
-        <li>Target Weight: <%= @logged_in_as.tweight %>lbs</li>
-        <li>BMI: <%= @logged_in_as.bmi %></li> 
-        <li>BMR: <%= @logged_in_as.bmr %></li> 
-        <li>Current Daily Calorie Intake: <%= @logged_in_as.calories %></li>
-        <button type="button" class="btn btn-outline-secondary btn-xs" data-toggle="modal" data-target="#editModal">Edit</button>
-      </ul>
+<h1>Dashboard.</h1>
+  <ul style="list-style-type: none; margin:0; padding: 0">
+    <li>Lifestyle: <%= @logged_in_as.lifestyle %></li>
+    <li>Age: <%= @logged_in_as.age %></li>
+    <li>Sex: <%= @logged_in_as.sex %></li>
+    <li>Height: <%= @logged_in_as.height %>in</li>
+    <li>Weight: <%= @logged_in_as.weight %>lbs</li>
+    <li>Target Weight: <%= @logged_in_as.tweight %>lbs</li>
+    <li>BMI: <%= @logged_in_as.bmi %></li> 
+    <li>BMR: <%= @logged_in_as.bmr %></li> 
+    <li>Current Daily Calorie Intake: <%= @logged_in_as.calories %></li>
+    <button type="button" class="btn btn-outline-secondary btn-xs" data-toggle="modal" data-target="#editModal">Edit</button>
+  </ul>
 
-
-    </div>
-  </div>
 </div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
