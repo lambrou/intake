@@ -1,0 +1,116 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <h3>Hello, <%= @logged_in_as.name %>!</h3>
+      <br />
+      <br />
+    </div>
+    <div class="col-4">
+      <ul style="list-style-type: none">
+        <li>Lifestyle: <%= @logged_in_as.lifestyle %></li>
+        <li>Age: <%= @logged_in_as.age %></li>
+        <li>Sex: <%= @logged_in_as.sex %></li>
+        <li>Height: <%= @logged_in_as.height %>in</li>
+        <li>Weight: <%= @logged_in_as.weight %>lbs</li>
+        <li>Target Weight: <%= @logged_in_as.tweight %>lbs</li>
+        <li>BMI: <%= @logged_in_as.bmi %></li> 
+        <li>BMR: <%= @logged_in_as.bmr %></li> 
+        <li>Current Daily Calorie Intake: <%= @logged_in_as.calories %></li>
+        <button type="button" class="btn btn-outline-secondary btn-xs" data-toggle="modal" data-target="#editModal">Edit</button>
+      </ul>
+
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-warning" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header text-center">
+        <h4 class="modal-title white-text w-100 font-weight-bold py-2">Edit Info</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+          <form class="form-horizontal" action="/users/<%= session[:user_id] %>" method="POST">
+          <fieldset>
+
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="age">Age</label>
+            <div class="col-md-4">
+            <input id="age" name="age" type="text" value="<%= @logged_in_as.age %>" class="form-control input-md" required="">
+            </div>
+          </div>
+
+          <div class="form-group">
+          <label class="col-md-4 control-label" for="sex">Sex</label><br />
+          <div class="col-md-4">
+          <div class="input-append btn-group">
+          <select id="sex" name="sex" class="form-control input-md" required="">
+            <option selected disabled="true"><%= @logged_in_as.sex %></option>
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+          </div>
+          </div>
+
+
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="height">Height (inches)</label>
+            <div class="col-md-4">
+            <input id="height" name="height" type="text" value="<%= @logged_in_as.height %>" class="form-control input-md" required="">
+            </div>
+          </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="weight">Weight (lbs)</label>
+          <div class="col-md-4">
+          <input id="weight" name="weight" type="text" value="<%= @logged_in_as.weight %>" class="form-control input-md" required="">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="tweight">Target Weight (lbs)</label>
+          <div class="col-md-4">
+          <input id="tweight" name="tweight" type="text" value="<%= @logged_in_as.tweight %>" class="form-control input-md" required="">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="lifestyle">Lifestyle</label><br />
+          <div class="col-md-4">
+ 
+          <div class="input-append btn-group">
+          <select id="lifestyle" name="lifestyle" class="form-control input-md" required="">
+            <option selected disabled="true"><%= @logged_in_as.lifestyle %></option>
+            <option>Sedentary</option>
+            <option>Lightly Active</option>
+            <option>Moderately Active</option>
+            <option>Very Active</option>
+            <option>Highly Active</option>
+          </select>
+          </div>
+        </div>
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="edit"></label>
+          <div class="col-md-4">
+            <button id="edit" name="edit" class="btn btn-outline-secondary">Submit</button>
+          </div>
+        </div>
+        </fieldset>
+        </form>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
