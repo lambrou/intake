@@ -56,6 +56,7 @@ post '/users/:user_id' do
 
   @user.bmi = '%.2f' % bmi
   @user.bmr = bmr
+  @user.maxcal = bmr - 500
   
   if params[:lifestyle]
     @user.lifestyle = params[:lifestyle]

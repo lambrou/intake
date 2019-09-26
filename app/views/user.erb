@@ -1,20 +1,48 @@
-<div class="container">
-<h1>Dashboard.</h1>
-  <ul style="list-style-type: none; margin:0; padding: 0">
-    <li>Lifestyle: <%= @logged_in_as.lifestyle %></li>
-    <li>Age: <%= @logged_in_as.age %></li>
-    <li>Sex: <%= @logged_in_as.sex %></li>
-    <li>Height: <%= @logged_in_as.height %>in</li>
-    <li>Weight: <%= @logged_in_as.weight %>lbs</li>
-    <li>Target Weight: <%= @logged_in_as.tweight %>lbs</li>
-    <li>BMI: <%= @logged_in_as.bmi %></li> 
-    <li>BMR: <%= @logged_in_as.bmr %></li> 
-    <li>Current Daily Calorie Intake: <%= @logged_in_as.calories %></li>
-    <button type="button" class="btn btn-outline-secondary btn-xs" data-toggle="modal" data-target="#editModal">Edit</button>
+<h1 style="display: inline;">Dashboard.</h1> <button type="button" class="btn btn-outline-secondary" style="float: right; margin-right: 90px; margin-top: 10px;" data-toggle="modal" data-target="#editModal">Edit</button>
+<hr style="margin-right: 85px;">
+<div class="row" style="cursor: default;">
+
+  <div class="list-group col-5" id="list-tab" role="tablist" style="margin:0; padding: 0; padding-left: 15px;">
+
+  <ul style="margin:0; padding: 0; padding-right: 10px;">
+    <li class="list-group-item list-group-item-secondary list-group-item-action disabled" id="list-weight-list" data-toggle="list" href="#list-weight" role="tab" aria-controls="weight"><b>Weight:</b> <%= @logged_in_as.weight %>lbs</li><br />
+    <li class="list-group-item list-group-item-secondary list-group-item-action disabled" id="list-height-list" data-toggle="list" href="#list-height" role="tab" aria-controls="height"><b>Height:</b> <%= @logged_in_as.height %>in</li><br />
+    <li class="list-group-item list-group-item-secondary list-group-item-action disabled" id="list-age-list" data-toggle="list" href="#list-age" role="tab" aria-controls="age"><b>Age:</b> <%= @logged_in_as.age %></li><br />
+    <li class="list-group-item list-group-item-secondary list-group-item-action" id="list-lifestyle-list" data-toggle="list" href="#list-lifestyle" role="tab" aria-controls="lifestyle"><b>Lifestyle:</b> <%= @logged_in_as.lifestyle %></li><br />
+      <li class="list-group-item list-group-item-secondary list-group-item-action" id="list-bmi-list" data-toggle="list" href="#list-bmi" role="tab" aria-controls="bmi"><b>BMI:</b> <%= @logged_in_as.bmi %></li> <br />
+    <li class="list-group-item list-group-item-secondary list-group-item-action" id="list-mcal-list" data-toggle="list" href="#list-mcal" role="tab" aria-controls="mcal"><b>Max Calories:</b> <%= @logged_in_as.maxcal %></li>
   </ul>
-
 </div>
+ <div class="list-group col-5" id="list-tab" role="tablist" style="margin:0; padding: 0;">
 
+  <ul style="margin:0; padding: 0; padding-right: 10px;">
+      <li class="list-group-item list-group-item-secondary list-group-item-action disabled" id="list-tweight-list" data-toggle="list" href="#list-tweight" role="tab" aria-controls="tweight"><b>Target Weight:</b> <%= @logged_in_as.tweight %>lbs</li><br />
+      <li class="list-group-item list-group-item-secondary list-group-item-action disabled" id="list-sex-list" data-toggle="list" href="#list-sex" role="tab" aria-controls="sex"><b>Sex:</b> <%= @logged_in_as.sex %></li><br />
+      <li class="list-group-item list-group-item-secondary list-group-item-action disabled" id="list-tcal-list" data-toggle="list" href="#list-tcal" role="tab" aria-controls="tcal"><b>Today's Calories:</b> <%= @logged_in_as.calories %></li><br />
+      <li class="list-group-item list-group-item-secondary list-group-item-action" id="list-bmr-list" data-toggle="list" href="#list-bmr" role="tab" aria-controls="bmr"><b>BMR:</b> <%= @logged_in_as.bmr %></li> <br />
+      <li class="list-group-item list-group-item-secondary list-group-item-action" id="list-tcarbs-list" data-toggle="list" href="#list-tcarbs" role="tab" aria-controls="tcarbs"><b>Today's Carbs:</b> <%= @logged_in_as.carbs %></li><br />
+      <li class="list-group-item list-group-item-secondary list-group-item-action" id="list-tfat-list" data-toggle="list" href="#list-tfat" role="tab" aria-controls="tfat"><b>Today's Fat:</b> <%= @logged_in_as.fat %></li>
+    </ul>
+  </div>
+    </div>
+  </div>
+
+
+  <div class="col-5">
+  </div>
+    <div class="tab-content" id="nav-tabContent" style="padding-left: 15px;">
+      <br />
+      <div class="tab-pane fade" id="list-lifestyle" role="tabpanel" aria-labelledby="list-lifestyle-list">If you get little or no exercise, choose <i>Sedentary</i>.<br>If you exercise 1-3 days a week, choose <i>Lightly Active</i>.<br>If you exercise 3-5 days a week, choose <i>Moderately Active</i>.<br>If you exercise 6-7 days a week, choose <i>Very Active</i>.<br>If you exercise more than all of the options above, choose <i>Highly Active</i>.</div>
+      <div class="tab-pane fade" id="list-age" role="tabpanel" aria-labelledby="list-age-list">Your <i>age</i> is a major factor in  calculating your <i>BMI</i> and <i>BMR</i>.</div>
+      <div class="tab-pane fade" id="list-height" role="tabpanel" aria-labelledby="list-height-list"></div>
+      <div class="tab-pane fade" id="list-weight" role="tabpanel" aria-labelledby="list-weight-list"></div>
+      <div class="tab-pane fade" id="list-bmi" role="tabpanel" aria-labelledby="list-bmi-list">Body mass index, or BMI, is a measure of body size.<br>If your BMI is less than 18.5, it falls within the underweight range.<br>If your BMI is 18.5 to 25, it falls within the normal.<br>If your BMI is 25.0 to 30, it falls within the overweight range.<br>If your BMI is 30.0 or higher, it falls within the obese range.</div>
+      <div class="tab-pane fade" id="list-bmr" role="tabpanel" aria-labelledby="list-bmr-list">Basal Metabolic Rate, or BMR, is the number of calories<br>you burn a day while at rest (without exercise).<br>BMR is also known as your body's metabolism. <br>Any increase to your metabolic weight, such as exercise, <br>will increase your BMR.</div>
+      <div class="tab-pane fade" id="list-tweight" role="tabpanel" aria-labelledby="list-tweight-list"></div>
+      <div class="tab-pane fade" id="list-tcarbs" role="tabpanel" aria-labelledby="list-tcarbs-list">Carbs should provide 45 to 65 percent of your daily calorie intake.<br>Based on a 2000-calorie diet, aim for 225-325g of carbs a day.<br />If you need to lose weight, eat around 50-150g of carbs a day.</div>
+      <div class="tab-pane fade" id="list-tfat" role="tabpanel" aria-labelledby="list-tfat-list">Fat should provide 20% to 35% of total calories from fat.<br>That is 44g-77g of fat per day if you eat 2,000 calories a day.<br />If you need to lose weight, eat around 50g of fats a day.</div>
+      <div class="tab-pane fade" id="list-mcal" role="tabpanel" aria-labelledby="list-mcal-list">This is the max amount of calories you should eat<br />a day if you want to lose a pound a week.</div>
+    </div>
 
 <!-- Modal -->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -47,7 +75,7 @@
           <div class="col-md-4">
           <div class="input-append btn-group">
           <select id="sex" name="sex" class="form-control input-md" required="">
-            <option selected disabled="true"><%= @logged_in_as.sex %></option>
+            <option selected disabled="true"><%= @logged_in_as.sex %></liption>
             <option>Male</option>
             <option>Female</option>
           </select>
@@ -82,7 +110,7 @@
  
           <div class="input-append btn-group">
           <select id="lifestyle" name="lifestyle" class="form-control input-md" required="">
-            <option selected disabled="true"><%= @logged_in_as.lifestyle %></option>
+            <option selected disabled="true"><%= @logged_in_as.lifestyle %></liption>
             <option>Sedentary</option>
             <option>Lightly Active</option>
             <option>Moderately Active</option>
@@ -104,5 +132,4 @@
       </div>
     </div>
     <!--/.Content-->
-  </div>
 </div>
