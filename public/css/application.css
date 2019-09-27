@@ -39,7 +39,7 @@ h1 {
 		font-size: 50%;
 	}
 	h1 {
-		font-size: 65%;
+		font-size: 75%;
 		display: inline;
    	}
    	hr {
@@ -56,6 +56,6 @@ h1 {
    	}
    	.list-group-item {
    		padding: 0px;
-   		font-size: 75%;
+   		font-size: 65%;
    	}
 }
