@@ -1,17 +1,4 @@
-@media (max-width: 700px) {
-	body {
-		font-size: 50%;
-	}
-	h1 {
-		font-size: 75%;
-   	}
-   	.btn {
-	  	padding: .25rem .4rem;
-	  	font-size: .6rem;
-	  	line-height: .5;
-	  	border-radius: .2rem;
-   	}
-}
+
 .btn-group-xs > .btn, .btn-xs {
   padding: .25rem .4rem;
   font-size: .875rem;
@@ -30,4 +17,25 @@
     -moz-border-radius: 40px;
     border-radius: 40px; 
     border-color: transparent;
+}
+hr {
+	margin-right: 100px;
+}
+
+@media (max-width: 700px) {
+	body {
+		font-size: 50%;
+	}
+	h1 {
+		font-size: 75%;
+   	}
+   	hr {
+   		margin-right: 0px;
+   	}
+   	.btn {
+	  	padding: .25rem .4rem;
+	  	font-size: .6rem;
+	  	line-height: .5;
+	  	border-radius: .2rem;
+   	}
 }
