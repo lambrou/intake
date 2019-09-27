@@ -1,13 +1,16 @@
 @media (max-width: 700px) {
-   h1 {
-   	font-size: 75%;
-   }
-   .btn {
-	  padding: .25rem .4rem;
-	  font-size: .875rem;
-	  line-height: .5;
-	  border-radius: .2rem;
-   }
+	body {
+		font-size: 50%;
+	}
+	h1 {
+		font-size: 75%;
+   	}
+   	.btn {
+	  	padding: .25rem .4rem;
+	  	font-size: .875rem;
+	  	line-height: .5;
+	  	border-radius: .2rem;
+   	}
 }
 .btn-group-xs > .btn, .btn-xs {
   padding: .25rem .4rem;
