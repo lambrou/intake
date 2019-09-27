@@ -1,5 +1,5 @@
-<h1 style="display: inline;">Dashboard.</h1> 
-<button type="button" class="btn btn-outline-secondary" style="float: right; margin-right: 100px; margin-top: 10px;" data-toggle="modal" data-target="#editModal">Edit Profile</button>
+<h1>Dashboard.</h1> 
+<button type="button" class="profilebtn btn btn-outline-secondary" data-toggle="modal" data-target="#editModal">Edit Profile</button>
 <div class="list-group" id="list-tab" role="tablist" style="padding-right: 90px;">
 <button type="button" class="btn btn-outline-secondary" id="list-addfood-list" style="float: right; margin-right: 10px; margin-top: 10px;" data-toggle="list" href="#list-addfood" role="tab" aria-controls="addfood">Add Meal</button>
 </div>
@@ -8,7 +8,7 @@
 
   <div class="list-group col-5" id="list-tab" role="tablist" style="margin:0; padding: 0; padding-left: 15px;">
 
-  <ul style="margin:0; padding: 0; padding-right: 10px;">
+  <ul>
     <li class="list-group-item list-group-item-secondary list-group-item-action disabled" id="list-weight-list" data-toggle="list" href="#list-weight" role="tab" aria-controls="weight"><b>Weight:</b> <%= @logged_in_as.weight %>lbs</li><br />
     <li class="list-group-item list-group-item-secondary list-group-item-action disabled" id="list-height-list" data-toggle="list" href="#list-height" role="tab" aria-controls="height"><b>Height:</b> <%= @logged_in_as.height %>in</li><br />
     <li class="list-group-item list-group-item-secondary list-group-item-action disabled" id="list-age-list" data-toggle="list" href="#list-age" role="tab" aria-controls="age"><b>Age:</b> <%= @logged_in_as.age %></li><br />
@@ -19,7 +19,7 @@
 </div>
  <div class="list-group col-5" id="list-tab" role="tablist" style="margin:0; padding: 0;">
 
-  <ul style="margin:0; padding: 0; padding-right: 10px;">
+  <ul>
       <li class="list-group-item list-group-item-secondary list-group-item-action disabled" id="list-tweight-list" data-toggle="list" href="#list-tweight" role="tab" aria-controls="tweight"><b>Target Weight:</b> <%= @logged_in_as.tweight %>lbs</li><br />
       <li class="list-group-item list-group-item-secondary list-group-item-action disabled" id="list-sex-list" data-toggle="list" href="#list-sex" role="tab" aria-controls="sex"><b>Sex:</b> <%= @logged_in_as.sex %></li><br />
       <li class="list-group-item list-group-item-secondary list-group-item-action disabled" id="list-tcal-list" data-toggle="list" href="#list-tcal" role="tab" aria-controls="tcal"><b>Today's Calories:</b> <%= @logged_in_as.calories %></li><br />
