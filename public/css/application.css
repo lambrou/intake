@@ -41,6 +41,7 @@ h1 {
 	h1 {
 		font-size: 75%;
 		display: inline;
+		padding: 0px;
    	}
    	hr {
    		margin-right: 0px;
@@ -53,7 +54,7 @@ h1 {
    	}
    	.profilebtn {
    		float: right;
-   		width: 20%; 
+   		position: relative;
    	}
    	.list-group-item {
    		padding: 0px;
