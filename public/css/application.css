@@ -36,7 +36,7 @@ h1 {
 }
 @media (max-width: 700px) {
 	body {
-		font-size: 30%;
+		font-size: 50%;
 	}
 	h1 {
 		font-size: 75%;
@@ -53,5 +53,8 @@ h1 {
    	}
    	.profilebtn {
    		float: right; 
+   	}
+   	.list-group-item {
+   		padding: 0px;
    	}
 }
