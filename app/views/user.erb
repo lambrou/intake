@@ -1,4 +1,7 @@
-<div class="col-6 left-pane text-center">
+<script src="/js/raphael-2.1.4.min.js"></script>
+<script src="/js/justgage.js"></script>
+
+<div class="col-6 left-pane">
 <h1>Dashboard.</h1> 
 <button type="button" class="profilebtn btn btn-outline-secondary" data-toggle="modal" data-target="#editModal">Edit Profile</button>
 <div class="list-group" id="list-tab" role="tablist" style="padding-right: 90px;">
@@ -34,9 +37,56 @@
 
 
   <div class="col-med-6">
-    <h1>Goals.</h1> 
-  </div>
+    <h1>Progress.</h1> 
+    <hr>
+    <div id="calgauge" style="float:left; width:200px; height:160px"></div>
+    <div id="carbgauge" style="float:right; width:200px; height:160px"></div>
+    <div id="fatgauge" style=" width:200px; height:160px"></div>
+    <div id="bmigauge" style="float:right; width:200px; height:160px"></div>
 
+  </div>
+  <script>
+    var g = new JustGage({
+      id: "calgauge",
+      value: <%= @logged_in_as.calories %>,
+      min: 0,
+      max: <%= @logged_in_as.maxcal %>,
+      showInnerShadow: true,
+      pointer: true,
+      title: "Calories"
+
+    });
+
+    var h = new JustGage({
+      id: "carbgauge",
+      value: <%= @logged_in_as.carbs %>,
+      min: 0,
+      max: 325,
+      showInnerShadow: true,
+      pointer: true,
+      title: "Carbs"
+    });
+
+    var i = new JustGage({
+      id: "fatgauge",
+      value: <%= @logged_in_as.fat %>,
+      min: 0,
+      max: 77,
+      showInnerShadow: true,
+      pointer: true,
+      title: "Fats"
+    });
+
+    var j = new JustGage({
+      id: "bmigauge",
+      value: <%= @logged_in_as.bmi %>,
+      min: 19,
+      max: 35,
+      showInnerShadow: true,
+      pointer: true,
+      title: "BMI"
+    });
+  </script>
     <div class="tab-content col-7" id="nav-tabContent" style="padding-left: 15px;">
       <br />
       <div class="tab-pane fade" id="list-lifestyle" role="tabpanel" aria-labelledby="list-lifestyle-list">If you get little or no exercise, choose <i>Sedentary</i>.<br>If you exercise 1-3 days a week, choose <i>Lightly Active</i>.<br>If you exercise 3-5 days a week, choose <i>Moderately Active</i>.<br>If you exercise 6-7 days a week, choose <i>Very Active</i>.<br>If you exercise more than all of the options above, choose <i>Highly Active</i>.</div>
