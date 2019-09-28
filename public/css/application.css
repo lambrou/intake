@@ -48,6 +48,9 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: black; 
 }
+p {
+	font-size: 0.7vw;
+}
 ul {
 	margin: 0px; 
 	padding: 0px; 
