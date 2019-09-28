@@ -13,6 +13,7 @@ gem 'sinatra-activerecord'
 
 gem 'rake'
 gem 'bcrypt'
+gem 'whenever', require: false
 
 gem 'shotgun'
 gem 'httparty'
