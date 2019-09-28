@@ -39,6 +39,7 @@ post '/users/:user_id' do
   else
     erb :not_authorized
   end
+  
   @user = User.find(session[:user_id])
   bmrl = { "Sedentary" => 1.2, "Lightly Active" => 1.375, "Moderately Active" => 1.55, "Very Active" => 1.725, "Highly Active" => 1.9 }
   bmi = (params[:weight].to_f/(params[:height].to_f**2) * 703.0)
@@ -66,7 +67,7 @@ post '/users/:user_id' do
   @user.weight = params[:weight]
   @user.tweight = params[:tweight]
   @user.height = params[:height]
-  
+
   if @user.save
     redirect '/users/' + session[:user_id].to_s
   end

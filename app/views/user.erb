@@ -48,7 +48,7 @@
       <div class="tab-pane fade" id="list-mcal" role="tabpanel" aria-labelledby="list-mcal-list">This is the max amount of calories you should eat<br />a day if you want to lose a pound a week.</div>
       <div class="tab-pane fade" id="list-addfood" role="tabpanel" aria-labelledby="list-addfood-list">
         
-      <form class="form-vertical" action="/search" method="POST">
+      <form class="form-vertical" id="searchForm">
       <fieldset>
         <div class="form-group">
           <div class="row">
@@ -64,6 +64,9 @@
         </div>
       </fieldset>
     </form>
+    <div class="row" id="searchResults" style="height:26vh; width:45vh; margin-left: 1px;overflow-y: scroll;">
+      
+    </div>
   </div>
 </div>
 
@@ -152,3 +155,20 @@
   </div>
 </div>
 
+<!-- Product Modal -->
+<div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Product Info</h5>
+
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
