@@ -54,12 +54,9 @@
 					<div class="alert alert-error"><%=@error%></div>
 			<% end %>
 			<div class='card'>
-			<img class="card-img" src='/bg.png'>
+			<img class="card-img" src='/bg1.png'>
 			<div class='card-img-overlay'>
 			  <div class="row">
-			    <div class="col-5">
-
-			    </div>
 			    <div class="col-7">
 			  		<%= yield %>
 					<% if @errors %>
@@ -93,25 +90,32 @@ $(document).mouseup(function(e) {
    		var idBase = 'https://api.spoonacular.com/food/products/';
    		var idEndpoint = idBase + e.target.id + '?apiKey=' + '<%= ENV['SP_API_KEY'] %>';
    		$('#productModal').modal('show');
-    	console.log(e.target.id);
-    }
-}); 
+
+    	$.ajax({
+    		type: 'get',
+    		url: idEndpoint,
+    		success:function(resp){
+    			$("#product-modal-body").html("");
+    			addModalHTML = '<div class="col-6"><img src="' + resp.images[0] + '"><p style="white-space: nowrap;">' + resp.title + '</p></div><div class="col-6 list-group"><p class="list-group-item">Calories: ' + resp.nutrition['calories'] + '</p><p class="list-group-item">Fat: ' + resp.nutrition['fat'] + '</p><p class="list-group-item">Carbs: ' + resp.nutrition['carbs'] + '</p><p class="list-group-item"> Protein: ' + resp.nutrition['protein'] + '</p></div>';
+    			$("#product-modal-body").append(addModalHTML);
+   			}
+   		});
+	}
+});
 
 $('#searchForm').submit(function(e){
     e.preventDefault();
-	var base = 'https://api.spoonacular.com/food/products/search?apiKey=' + '<%= ENV['SP_API_KEY'] %>' + '&number=15';
-	var endpoint = base + '&query=' + $('#searchForm').serialize().substring(7); + '&callback=?';
+	var searchBase = 'https://api.spoonacular.com/food/products/search?apiKey=' + '<%= ENV['SP_API_KEY'] %>' + '&number=15';
+	var searchEndpoint = searchBase + '&query=' + $('#searchForm').serialize().substring(7); + '&callback=?';
 	var addHTML;
-	console.log(endpoint);
     $.ajax({
         type: 'get',
-        url: endpoint,
+        url: searchEndpoint,
         success:function(resp){
         	$("#searchResults").html("");
         	resp.products.forEach(function (item, index) {
         		addHTML = '<div class="col-6 list-group-item list-group-item-light list-group-item-action product-tab" id=' + item['id'] + '><img src="' + item['image'] + '" style="padding:5px;height:auto;width:50%;">' + '<p>' + item['title'] + '</p></div>';
         		$("#searchResults").append(addHTML);
-        		console.log(item);
         	});
         	
         }
