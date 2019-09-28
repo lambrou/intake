@@ -23,6 +23,11 @@ body {
 .card-img {
 	height: 92vh; !important
 }
+.left-pane {
+	padding:0px;
+	margin-left:20px;
+	font-size:13px;
+}
 ::-webkit-scrollbar {
   width: 10px;
 }

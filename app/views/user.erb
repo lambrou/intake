@@ -1,3 +1,4 @@
+<div class="col-6 left-pane text-center">
 <h1>Dashboard.</h1> 
 <button type="button" class="profilebtn btn btn-outline-secondary" data-toggle="modal" data-target="#editModal">Edit Profile</button>
 <div class="list-group" id="list-tab" role="tablist" style="padding-right: 90px;">
@@ -24,16 +25,18 @@
       <li class="list-group-item list-group-item-secondary list-group-item-action disabled" id="list-sex-list" data-toggle="list" href="#list-sex" role="tab" aria-controls="sex"><b>Sex:</b> <%= @logged_in_as.sex %></li><br />
       <li class="list-group-item list-group-item-secondary list-group-item-action disabled" id="list-tcal-list" data-toggle="list" href="#list-tcal" role="tab" aria-controls="tcal"><b>Today's Calories:</b> <%= @logged_in_as.calories %></li><br />
       <li class="selectable list-group-item list-group-item-secondary list-group-item-action" id="list-bmr-list" data-toggle="list" href="#list-bmr" role="tab" aria-controls="bmr"><b>BMR:</b> <%= @logged_in_as.bmr %></li> <br />
-      <li class="selectable list-group-item list-group-item-secondary list-group-item-action" id="list-tcarbs-list" data-toggle="list" href="#list-tcarbs" role="tab" aria-controls="tcarbs"><b>Today's Carbs:</b> <%= @logged_in_as.carbs %></li><br />
-      <li class="selectable list-group-item list-group-item-secondary list-group-item-action" id="list-tfat-list" data-toggle="list" href="#list-tfat" role="tab" aria-controls="tfat"><b>Today's Fat:</b> <%= @logged_in_as.fat %></li>
+      <li class="selectable list-group-item list-group-item-secondary list-group-item-action" id="list-tcarbs-list" data-toggle="list" href="#list-tcarbs" role="tab" aria-controls="tcarbs"><b>Today's Carbs:</b> <%= @logged_in_as.carbs %>g</li><br />
+      <li class="selectable list-group-item list-group-item-secondary list-group-item-action" id="list-tfat-list" data-toggle="list" href="#list-tfat" role="tab" aria-controls="tfat"><b>Today's Fat:</b> <%= @logged_in_as.fat %>g</li>
     </ul>
   </div>
     </div>
   </div>
 
 
-  <div class="col-5">
+  <div class="col-med-6">
+    <h1>Goals.</h1> 
   </div>
+
     <div class="tab-content col-7" id="nav-tabContent" style="padding-left: 15px;">
       <br />
       <div class="tab-pane fade" id="list-lifestyle" role="tabpanel" aria-labelledby="list-lifestyle-list">If you get little or no exercise, choose <i>Sedentary</i>.<br>If you exercise 1-3 days a week, choose <i>Lightly Active</i>.<br>If you exercise 3-5 days a week, choose <i>Moderately Active</i>.<br>If you exercise 6-7 days a week, choose <i>Very Active</i>.<br>If you exercise more than all of the options above, choose <i>Highly Active</i>.</div>
@@ -161,17 +164,20 @@
     <div class="modal-content" id="product-modal-header">
       <div class="modal-header">
         <h5 class="modal-title" id="productModalLabel">Product Info</h5>
+      </div>
+      <form class="form-horizontal" id="addForm">
 
-      </div>
-      <div class="modal-body" >
-        <div class="row" id="product-modal-body">
+        <div class="modal-body" >
+          <div class="row" id="product-modal-body">
         
+          </div>
         </div>
-      </div>
-      <div class="modal-footer" id="product-modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Add</button>
-      </div>
+      </form>
+
+        <div class="modal-footer" id="product-modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" id="addProduct" name="addProduct" class="btn btn-primary">Add</button>
+        </div>
     </div>
   </div>
 </div>

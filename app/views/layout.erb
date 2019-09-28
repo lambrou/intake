@@ -57,7 +57,7 @@
 			<img class="card-img" src='/bg1.png'>
 			<div class='card-img-overlay'>
 			  <div class="row">
-			    <div class="col-7">
+			    
 			  		<%= yield %>
 					<% if @errors %>
 					  <div class="errors-wrapper">
@@ -70,7 +70,6 @@
 					<% end %>
 			    </div>
 			  </div>
-		    </div>
 		</div>
       </div>
 	</div>
@@ -87,20 +86,39 @@ $(document).mouseup(function(e) {
         $('.active').removeClass('active'); 
     } 
     if ($(e.target).hasClass("product-tab")) {
+    	var productID = e.target.id;
    		var idBase = 'https://api.spoonacular.com/food/products/';
-   		var idEndpoint = idBase + e.target.id + '?apiKey=' + '<%= ENV['SP_API_KEY'] %>';
+   		var idEndpoint = idBase + productID + '?apiKey=' + '<%= ENV['SP_API_KEY'] %>';
    		$('#productModal').modal('show');
 
     	$.ajax({
-    		type: 'get',
+    		type: 'GET',
     		url: idEndpoint,
     		success:function(resp){
     			$("#product-modal-body").html("");
-    			addModalHTML = '<div class="col-6"><img src="' + resp.images[0] + '"><p style="white-space: nowrap;">' + resp.title + '</p></div><div class="col-6 list-group"><p class="list-group-item">Calories: ' + resp.nutrition['calories'] + '</p><p class="list-group-item">Fat: ' + resp.nutrition['fat'] + '</p><p class="list-group-item">Carbs: ' + resp.nutrition['carbs'] + '</p><p class="list-group-item"> Protein: ' + resp.nutrition['protein'] + '</p></div>';
+    			addModalHTML = '<div class="col-6"><img src="' + resp.images[0] + '"><p style="white-space: nowrap;">' + resp.title + '</p></div><div class="col-6 list-group"><p class="list-group-item">Calories: ' + '<span id="calories">' + resp.nutrition['calories'] + '</span></p><p class="list-group-item">Fat: ' + '<span id="fat">' + resp.nutrition['fat'] + '</span></p><p class="list-group-item">Carbs: ' + '<span id="carbs">' + resp.nutrition['carbs'] + '</span></p><p class="list-group-item"> Protein: ' + resp.nutrition['protein'] + '</p></div><span class="productID" id="' + productID + '"></span>' ;
     			$("#product-modal-body").append(addModalHTML);
    			}
    		});
 	}
+    if (e.target.id == "addProduct") {
+
+    	var addEndpoint = '/users/<%= session[:user_id] %>';
+
+	    $.ajax({
+	        type: 'POST',
+	        url: addEndpoint,
+	        data: { 
+	          calcontent: $('#calories').text(), 
+	          carbcontent: $('#carbs').text(), 
+	          fatcontent: $('#fat').text()
+	        },
+	        success:function(resp){
+	        	window.location.href = '/users/<%= session[:user_id] %>';
+	    	}
+	    });
+	}
+
 });
 
 $('#searchForm').submit(function(e){
@@ -109,7 +127,7 @@ $('#searchForm').submit(function(e){
 	var searchEndpoint = searchBase + '&query=' + $('#searchForm').serialize().substring(7); + '&callback=?';
 	var addHTML;
     $.ajax({
-        type: 'get',
+        type: 'GET',
         url: searchEndpoint,
         success:function(resp){
         	$("#searchResults").html("");
@@ -121,6 +139,17 @@ $('#searchForm').submit(function(e){
         }
     });
 });
+/*$('#addForm').submit(function(e){
+	var addEndpoint = '/users/<%= session[:user_id] %>'
+	var formdata = $(this).serialize()
+    $.ajax({
+        type: 'POST',
+        url: addEndpoint,
+        success:function(resp){
+        	console.log('posted');
+        }
+    });
+});*/
 </script>
   </body>
 </html>
