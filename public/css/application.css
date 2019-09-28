@@ -20,7 +20,8 @@ body {
     border-color: transparent;
 }
 .card-img {
-	height: 92vh; !important
+  width:100%;
+  height:auto;
 }
 .left-pane {
 	padding:0px;
