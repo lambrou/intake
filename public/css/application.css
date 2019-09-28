@@ -11,8 +11,7 @@ body {
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     border-radius: 20px; 
-    background-color: silver;
-    border-color: silver;
+
 }
 .modal-content  {
     -webkit-border-radius: 40px;
