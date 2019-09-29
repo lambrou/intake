@@ -85,9 +85,6 @@ h1 {
 		margin-bottom: 0;
 	}
 
-	list-group {
-		font-size: 1.1vw;
-	}
 
 	ul li {
 	 	font-size:1.1vw;
@@ -105,7 +102,7 @@ h1 {
    	}
    	.list-group-item {
    		padding: 0px;
-   		font-size: 65%;
-   	border-style: solid;bo
+   		font-size: 1.1vw;
+	   	border-style: solid;
    	}
 }
