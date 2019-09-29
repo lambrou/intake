@@ -108,4 +108,9 @@ h1 {
    	.right-pane {
 		display: none;
 	}
+	.tab-content {
+		position:absolute;
+		right:0; 
+		padding-left:10vw;
+	}
 }
