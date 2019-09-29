@@ -85,6 +85,11 @@ h1 {
 		margin-bottom: 0;
 	}
 
+
+	ul {
+	 	margin-bottom: 
+	}
+
    	.btn {
 	  	padding: .25rem .4rem;
 	  	font-size: .3rem;
@@ -95,7 +100,7 @@ h1 {
    		float: right;
    		position: relative;
    	}
-   	.list-group {
+   	.list-group-item {
    		padding: 0px;
    		font-size: 1.1vw;
    	}
