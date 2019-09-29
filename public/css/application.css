@@ -86,8 +86,8 @@ h1 {
 	}
 
 
-	ul li {
-	 	font-size:1.1vw;
+	ul {
+	 	margin-bottom: 1px;
 	}
 
    	.btn {
