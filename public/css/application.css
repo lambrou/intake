@@ -80,6 +80,10 @@ h1 {
    	hr {
    		margin-right: 0px;
    	}
+   	p {
+	font-size: 0.5vw;
+	}
+
    	.btn {
 	  	padding: .25rem .4rem;
 	  	font-size: .6rem;
