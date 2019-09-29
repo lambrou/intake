@@ -111,7 +111,7 @@ h1 {
 	.tab-content {
 		position:absolute;
 		right:0; 
-		padding-left:18vw;
-		font-size: 1.3vw;
+		left: 50vw;
+		font-size: 1.5vw;
 	}
 }
