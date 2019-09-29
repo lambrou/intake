@@ -87,6 +87,7 @@ h1 {
 
 	ul {
    		line-height: .3rem;
+   		display:block;
 	}
 
    	.btn {
