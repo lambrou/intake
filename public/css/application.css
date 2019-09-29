@@ -84,14 +84,13 @@ h1 {
 		font-size: 1.2vw;
 		margin-bottom: 0;
 	}
-	li {
-		font-size: .9vw; !important
-	}
+
 	b {
-		font-size: .7vw;
+		font-size: 1.1vw;
 	}
-	.list-group-item {
-		font-size: .9vw;
+
+	ul li{
+	 	font-size:1.1vw;
 	}
 
    	.btn {
