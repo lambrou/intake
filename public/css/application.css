@@ -85,14 +85,6 @@ h1 {
 		margin-bottom: 0;
 	}
 
-	ul {
-   		line-height: .3rem;
-   		height: auto;
-   		white-space: nowrap;
-
-   		display:block;
-	}
-
    	.btn {
 	  	padding: .25rem .4rem;
 	  	font-size: .3rem;
