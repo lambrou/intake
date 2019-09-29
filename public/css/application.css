@@ -85,7 +85,10 @@ h1 {
 		margin-bottom: 0;
 	}
 	li {
-		font-size: .9vw;
+		font-size: .9vw; !important
+	}
+	b {
+		font-size: .7vw;
 	}
 	.list-group-item {
 		font-size: .9vw;
@@ -93,7 +96,7 @@ h1 {
 
    	.btn {
 	  	padding: .25rem .4rem;
-	  	font-size: .4rem;
+	  	font-size: .3rem;
 	  	line-height: .5;
 	  	border-radius: .2rem;
    	}
