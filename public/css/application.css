@@ -88,6 +88,7 @@ h1 {
 
 	ul {
 	 	margin-bottom: 1px;
+   		line-height: .2rem;
 	}
 
    	.btn {
@@ -103,7 +104,5 @@ h1 {
    	.list-group {
    		padding: 0px;
    		font-size: 1.1vw;
-   		line-height: .3rem;
-	   	border-style: solid;
    	}
 }
