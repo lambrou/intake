@@ -100,9 +100,10 @@ h1 {
    		float: right;
    		position: relative;
    	}
-   	.list-group-item {
+   	.list-group {
    		padding: 0px;
    		font-size: 1.1vw;
+   		line-height: .3rem;
 	   	border-style: solid;
    	}
 }
