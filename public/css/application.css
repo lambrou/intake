@@ -87,6 +87,9 @@ h1 {
 
 	ul {
    		line-height: .3rem;
+   		height: auto;
+   		white-space: nowrap;
+
    		display:block;
 	}
 
