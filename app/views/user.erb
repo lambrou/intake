@@ -1,6 +1,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js" crossorigin="anonymous"></script>
 <script src="/js/gauge.min.js" crossorigin="anonymous"></script>
-
+<script>
+  if (<%= @logged_in_as.weight %> == 0) {
+    $('#getStartedModal').modal('show');
+  }
+</script>
 <div class="col-6 left-pane">
 <h1>Dashboard.</h1> 
 <button type="button" class="profilebtn btn btn-outline-secondary" data-toggle="modal" data-target="#editModal">Edit Profile</button>
@@ -378,6 +382,29 @@ var weightChart = new Chart(wtx, {
         <div class="modal-footer" id="product-modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="submit" id="addProduct" name="addProduct" class="btn btn-primary">Add</button>
+        </div>
+    </div>
+  </div>
+</div>
+<!-- Get Started Modal -->
+<div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="getStartedModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" id="product-modal-header">
+      <div class="modal-header">
+        <h5 class="modal-title" id="productModalLabel">Get Started</h5>
+      </div>
+      <form class="form-horizontal" id="addForm">
+
+        <div class="modal-body" >
+          <div class="row" id="product-modal-body">
+        
+          </div>
+        </div>
+      </form>
+
+        <div class="modal-footer" id="product-modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#getStartedModal">Continue</button>
         </div>
     </div>
   </div>
