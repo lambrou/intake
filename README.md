@@ -6,7 +6,7 @@ Calorie Tracking and Weight Loss Webapp Built in Ruby and Sinatra using Postgres
 
 ![screenshot](https://github.com/lambrou/intake/blob/master/public/screen2.png "Screenshot")
 
-![screenshot](https://github.com/lambrou/intake/blob/master/public/screen3.png "Screenshot")
+![screenshot](https://github.com/lambrou/intake/blob/master/public/screen4.png "Screenshot")
 
 
 
