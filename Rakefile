@@ -14,10 +14,12 @@ namespace :db do
         currentUser.timestampHistory = '["' + Time.now.strftime("%Y/%m/%d").to_s + '"]' 
         currentUser.dayCount = 1
       else
-        currentUser.calorieHistory = (currentUser.calorieHistory).delete_suffix('"]') + '","' + currentUser.calories.to_s + '"]'
-        currentUser.weightHistory = (currentUser.weightHistory).delete_suffix('"]') + '","' + currentUser.weight.to_s + '"]'
-        currentUser.timestampHistory = (currentUser.timestampHistory).delete_suffix('"]') + '","' + Time.now.strftime("%Y/%m/%d").to_s + '"]'
-        currentUser.dayCount += 1
+        if currentUser.calories > 0 && currentUser.weight > 0
+          currentUser.calorieHistory = (currentUser.calorieHistory).delete_suffix('"]') + '","' + currentUser.calories.to_s + '"]'
+          currentUser.weightHistory = (currentUser.weightHistory).delete_suffix('"]') + '","' + currentUser.weight.to_s + '"]'
+          currentUser.timestampHistory = (currentUser.timestampHistory).delete_suffix('"]') + '","' + Time.now.strftime("%Y/%m/%d").to_s + '"]'
+          currentUser.dayCount += 1
+        end
 
       end
       currentUser.calories = 0
