@@ -1,3 +1,5 @@
+require 'chartkick'
+
 get '/users/new' do
   if session[:user_id]
     @user = User.find(session[:user_id])
@@ -19,15 +21,40 @@ post '/users/new' do
   end
 end
 
+get '/caldata' do
+  #@logged_in_as = User.find(session[:user_id]) if session[:user_id]
+  #@logged_in_as.calorieHistory.to_json
+  datatest = {'2013-01-01' => 1, '2013-01-02' => 2, '2013-01-3' => 3, '2013-01-04' => 4, '2013-01-05' => 5, '2013-01-06' => 12}
+  datatest.to_json
+
+end
+
 get '/users/:user_id' do
   @logged_in_as = User.find(session[:user_id]) if session[:user_id]
   @viewing_user = User.find(params[:user_id])
-
   if @logged_in_as && @logged_in_as.id == @viewing_user.id
+    if @logged_in_as.timestampHistory
+      @graph_dates = @logged_in_as.timestampHistory
+    else
+      @graph_dates = "['0']"
+    end
+
+    if @logged_in_as.calorieHistory
+      @calorie_values = @logged_in_as.calorieHistory
+    else
+      @calorie_values = "['0']"
+    end
+    if @logged_in_as.weightHistory
+      @weight_values = @logged_in_as.weightHistory
+    else
+      @weight_values = "['0']"
+    end
     erb :user
   else
     erb :not_authorized
   end
+  
+
 end
 
 post '/users/:user_id' do

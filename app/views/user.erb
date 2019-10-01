@@ -1,5 +1,5 @@
-<script src="/js/raphael-2.1.4.min.js"></script>
-<script src="/js/justgage.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js" crossorigin="anonymous"></script>
+<script src="/js/gauge.min.js" crossorigin="anonymous"></script>
 
 <div class="col-6 left-pane">
 <h1>Dashboard.</h1> 
@@ -33,64 +33,6 @@
     </ul>
   </div>
     </div>
-  </div>
-
-
-  <div class="col-med-6 right-pane">
-    <h1>Progress.</h1> 
-    <hr style="width:100%">
-    <div id="calgauge" style="float:left; padding-right:10px; width:200px; height:160px"></div>
-    <div id="carbgauge" style="float:right; padding-left:10px; width:200px; height:160px"></div>
-    <div id="fatgauge" style="padding-right:10px; width:200px; height:160px"></div>
-    <div id="bmigauge" style="float:right; padding-left:10px; width:200px; height:160px"></div>
-
-  </div>
-  <script>
-    var g = new JustGage({
-      id: "calgauge",
-      value: <%= @logged_in_as.calories %>,
-      min: 0,
-      max: <%= @logged_in_as.maxcal %>,
-      showInnerShadow: true,
-      pointer: true,
-      relativeGaugeSize: true,
-      title: "Calories"
-
-    });
-
-    var h = new JustGage({
-      id: "carbgauge",
-      value: <%= @logged_in_as.carbs %>,
-      min: 0,
-      max: 325,
-      showInnerShadow: true,
-      pointer: true,
-      relativeGaugeSize: true,
-      title: "Carbs"
-    });
-
-    var i = new JustGage({
-      id: "fatgauge",
-      value: <%= @logged_in_as.fat %>,
-      min: 0,
-      max: 77,
-      showInnerShadow: true,
-      pointer: true,
-      relativeGaugeSize: true,
-      title: "Fats"
-    });
-
-    var j = new JustGage({
-      id: "bmigauge",
-      value: <%= @logged_in_as.bmi %>,
-      min: 19,
-      max: 35,
-      showInnerShadow: true,
-      pointer: true,
-      relativeGaugeSize: true,
-      title: "BMI"
-    });
-  </script>
     <div class="tab-content col-7" id="nav-tabContent" style="padding-left: 15px;">
       <br />
       <div class="tab-pane fade" id="list-lifestyle" role="tabpanel" aria-labelledby="list-lifestyle-list">If you get little or no exercise, choose <i>Sedentary</i>.<br>If you exercise 1-3 days a week, choose <i>Lightly Active</i>.<br>If you exercise 3-5 days a week, choose <i>Moderately Active</i>.<br>If you exercise 6-7 days a week, choose <i>Very Active</i>.<br>If you exercise more than all of the options above, choose <i>Highly Active</i>.</div>
@@ -126,6 +68,211 @@
     </div>
   </div>
 </div>
+</div>
+
+
+  <div class="col-med-6 right-pane">
+    <h1>Progress.</h1> 
+    <hr style="width:100%">
+    <div class="gauge text-center" style="float:left;">
+      <canvas width="200" height="100" id="calgauge" ></canvas><br>Calories:
+      <div id="calgauge-textfield" style="font-size: 15px;">0</div>
+    </div>
+
+    <div class="gauge text-center" style="float:right;">
+      <canvas width="200" height="100" id="carbgauge"></canvas><br>Carbs:
+      <div id="carbgauge-textfield" style="font-size: 15px;"><%= @logged_in_as.carbs %></div>
+    </div><br>    
+
+    <div class="gauge text-center"  style="float:left;">
+      <canvas width="200" height="100" id="fatgauge"></canvas><br>Fats:
+      <div id="fatgauge-textfield" style="font-size: 15px;">0</div>
+    </div>    
+
+    <div class="gauge text-center"  style="float:right;">
+      <canvas width="200" height="100" id="bmigauge"></canvas><br>BMI:
+      <div id="bmigauge-textfield" style="font-size: 15px;">0</div>
+    </div>    
+<script>
+var calopts = {
+  angle: 0,
+  lineWidth: .33, 
+  radiusScale: .6,
+  fontSize: 41,
+  divisions: 3,
+  divLength: 100,
+  pointer: {
+    length: .8, 
+    strokeWidth: 0.01, 
+    color: '#000000' 
+  },
+  renderTicks: {
+    divisions: 3,
+    divWidth: 1.1,
+    divLength: 1,
+    divColor: '#333333',
+  },
+  limitMax: 'true', 
+  colorStart: '#2DA3DC', 
+  colorStop: '#C0C0DB', 
+  strokeColor: '#EEEEEE'
+};
+var caltarget = document.getElementById('calgauge'); // your canvas element
+var calgauge = new Gauge(caltarget).setOptions(calopts); // create sexy gauge!
+calgauge.maxValue = <%= @logged_in_as.maxcal %>; // set max gauge value
+calgauge.animationSpeed = 32; // set animation speed (32 is default value)
+calgauge.set(<%= @logged_in_as.calories %>); // set actual value
+calgauge.setTextField(document.getElementById("calgauge-textfield"));
+
+var carbopts = {
+  angle: 0,
+  lineWidth: .33, 
+  radiusScale: .6,
+  fontSize: 41,
+  divisions: 3,
+  divLength: 100,
+  pointer: {
+    length: .8, 
+    strokeWidth: 0.01, 
+    color: '#000000' 
+  },
+  renderTicks: {
+    divisions: 3,
+    divWidth: 1.1,
+    divLength: 1,
+    divColor: '#333333',
+  },
+  limitMax: 'true', 
+  colorStart: '#2DA3DC', 
+  colorStop: '#C0C0DB', 
+  strokeColor: '#EEEEEE'
+};
+var carbtarget = document.getElementById('carbgauge'); // your canvas element
+var carbgauge = new Gauge(carbtarget).setOptions(carbopts); // create sexy gauge!
+carbgauge.maxValue = 300; // set max gauge value
+carbgauge.animationSpeed = 32; // set animation speed (32 is default value)
+carbgauge.set(<%= @logged_in_as.carbs %>); // set actual value
+carbgauge.setTextField(document.getElementById("carbgauge-textfield"));
+
+var fatopts = {
+  angle: 0,
+  lineWidth: .33, 
+  radiusScale: .6,
+  fontSize: 41,
+  divisions: 3,
+  divLength: 100,
+  pointer: {
+    length: .8, 
+    strokeWidth: 0.01, 
+    color: '#000000' 
+  },
+  renderTicks: {
+    divisions: 3,
+    divWidth: 1.1,
+    divLength: 1,
+    divColor: '#333333',
+  },
+  limitMax: 'true', 
+  colorStart: '#2DA3DC', 
+  colorStop: '#C0C0DB', 
+  strokeColor: '#EEEEEE'
+};
+var fattarget = document.getElementById('fatgauge'); // your canvas element
+var fatgauge = new Gauge(fattarget).setOptions(fatopts); // create sexy gauge!
+fatgauge.maxValue = 75; // set max gauge value
+fatgauge.animationSpeed = 32; // set animation speed (32 is default value)
+fatgauge.set(<%= @logged_in_as.fat %>); // set actual value
+fatgauge.setTextField(document.getElementById("fatgauge-textfield"));
+
+var bmiopts = {
+  angle: 0,
+  lineWidth: .33, 
+  radiusScale: .6,
+  fontSize: 41,
+  divisions: 3,
+  divLength: 100,
+  pointer: {
+    length: .8, 
+    strokeWidth: 0.01, 
+    color: '#000000' 
+  },
+  renderTicks: {
+    divisions: 3,
+    divWidth: 1.1,
+    divLength: 1,
+    divColor: '#333333',
+  },
+  limitMax: 'true', 
+  colorStart: '#2DA3DC', 
+  colorStop: '#C0C0DB', 
+  strokeColor: '#EEEEEE'
+};
+var bmitarget = document.getElementById('bmigauge'); // your canvas element
+var bmigauge = new Gauge(bmitarget).setOptions(bmiopts); // create sexy gauge!
+bmigauge.maxValue = 42; // set max gauge value
+bmigauge.animationSpeed = 32; // set animation speed (32 is default value)
+bmigauge.set(<%= @logged_in_as.bmi %>); // set actual value
+bmigauge.setTextField(document.getElementById("bmigauge-textfield"));
+</script>
+
+<canvas id="calorieChart" width="500" height="200"></canvas>
+<canvas id="weightChart" width="500" height="200"></canvas>
+
+<script>
+var ctx = document.getElementById('calorieChart').getContext('2d');
+var calorieChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: <%= @graph_dates %>,
+        datasets: [{
+            label: 'Calories',
+            data: <%= @calorie_values %>,
+            borderColor: "blue",
+            fill: false
+        }]
+    },
+    options: {
+      layout: {
+        padding: {
+          left: 30,
+          right: 30
+        }
+      },
+      title: {
+        display: true,
+        text: 'Calorie Intake Over Time'
+      }
+    }
+});
+
+var wtx = document.getElementById('weightChart').getContext('2d');
+var weightChart = new Chart(wtx, {
+    type: 'line',
+    data: {
+        labels: <%= @graph_dates %>,
+        datasets: [{
+            label: 'Weight',
+            data: <%= @weight_values %>,
+            borderColor: "blue",
+            fill: false
+        }]
+    },
+    options: {
+      layout: {
+        padding: {
+          left: 30,
+          right: 30
+        }
+      },
+      title: {
+        display: true,
+        text: 'Weight over time'
+      }
+    }
+});
+</script>
+</div>
+
 
 
 <!-- Edit Modal -->

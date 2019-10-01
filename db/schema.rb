@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2015_06_13_100555) do
+ActiveRecord::Schema.define(version: 2019_09_29_081156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,12 @@ ActiveRecord::Schema.define(version: 2015_06_13_100555) do
     t.string "timezone"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "carbHistory"
+    t.string "fatHistory"
+    t.string "calorieHistory"
+    t.string "weightHistory"
+    t.string "timestampHistory"
+    t.integer "dayCount", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

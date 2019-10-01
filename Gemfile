@@ -17,6 +17,8 @@ gem 'whenever', require: false
 
 gem 'shotgun'
 gem 'httparty'
+gem "chartkick"
+
 group :development, :test do
   gem 'faker'
   gem 'rspec'
